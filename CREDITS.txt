@@ -1,0 +1,22 @@
+The Last Witness - Gorilla Tag horror mod
+
+Witness model:
+- "gorilla tag horror rig ( credits to wiz)" by IdkmaneGTH (https://sketchfab.com/Idkmane179)
+  https://sketchfab.com/3d-models/gorilla-tag-horror-rig-credits-to-wiz-ff82c0543f95408a8102ffa6a26bd976
+  Licensed under CC BY (Creative Commons Attribution).
+- This work is based on "Gorilla Tag Ik Rig" (https://sketchfab.com/3d-models/gorilla-tag-ik-rig-aa8410e08a8a4686a93ff765e112656e)
+  by wiz (https://sketchfab.com/wizker) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/).
+  Changes: horror textures by IdkmaneGTH applied; skinned mesh baked to a static pose for the mod.
+
+Most sounds are generated procedurally by the mod (the recorded ones are listed below). Lighting uses Gorilla Tag's own Ghost Reactor lighting system.
+Mod code written with Claude (AI).
+
+Sounds (witness.bundle):
+- "Behind you" whisper by pjhodson (freesound.org/s/223412), CC0.
+- Intense Jumpscare by Unaxete (freesound.org/s/366168), CC0.
+- Jumpscare 1 by zombyKlr (freesound.org/s/712416), CC0.
+- Dark Thriller Horror Atmo by szegvari (freesound.org/s/633956), CC0.
+- Static 5 by bernhoftbret (freesound.org/s/857861), CC0.
+- Main soundtrack: "80s Horror Throwback Scary Creeper Bed", APM Music / Annihilation (commercial library music,
+  private use only: remove before any public release).
+- Countdown song and "god-is-coming": supplied by the player, source not recorded (remove before any public release).
