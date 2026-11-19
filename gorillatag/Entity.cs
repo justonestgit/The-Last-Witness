@@ -108,7 +108,14 @@ namespace TheLastWitness
             Load();
             var root = new GameObject("TLW witness");
             GameObject body;
-            if (prefab != null && (model ?? Director.Rng.NextDouble() < 0.5))
+            // The menu's choice wins; with "Ambos" the caller (or chance) decides.
+            bool useModel = Settings.Form.Value switch
+            {
+                EntityForm.Cinza => true,
+                EntityForm.Sombra => false,
+                _ => model ?? Director.Rng.NextDouble() < 0.5,
+            };
+            if (prefab != null && useModel)
             {
                 body = UnityEngine.Object.Instantiate(prefab);
                 foreach (var r in body.GetComponentsInChildren<Renderer>(true))

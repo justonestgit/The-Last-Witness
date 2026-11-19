@@ -17,6 +17,23 @@ restart)
   "/c/Program Files (x86)/Steam/steam.exe" -applaunch 1533390 --doorstop-target-assembly "C:\mctag\testbep-witness\BepInEx\core\BepInEx.Preloader.dll" &
   for i in $(seq 1 100); do sleep 3; grep -q "TheLastWitness: ready" "$L" 2>/dev/null && break; done
   sleep 2
+  # GT joins a public room by itself: move to a private one at once, and stop the copy if that fails
+  # (a modded client must never sit in a public lobby).
+  code="TLW$(date +%s | tail -c 6)$RANDOM"
+  private=0
+  for i in $(seq 1 10); do
+    echo "join $code" > "$D/cmd.req"
+    sleep 4
+    echo "where" > "$D/cmd.req"
+    sleep 2
+    grep -aq "inRoom True private True" "$L" && { private=1; break; }
+  done
+  if [ $private = 0 ]; then
+    echo "NOT in a private room: closing the test copy"
+    powershell -c "Get-CimInstance Win32_Process -Filter \"Name='Gorilla Tag.exe'\" | Where-Object { \$_.CommandLine -like '*testbep-witness*' } | ForEach-Object { Stop-Process -Id \$_.ProcessId }"
+    exit 1
+  fi
+  echo "private room $code"
   grep -a "TheLastWitness\|Exception" "$L" | head -20
   ;;
 cmd)

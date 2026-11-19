@@ -187,6 +187,7 @@ namespace TheLastWitness
             Plugin.Log.LogInfo($"TheLastWitness: tape {index + 1} ({Found.Count}/{TapeCount}), act {Act}");
             int ud = Fx.Track(() => Fx.Duck = 0f);
             Fx.Duck = 1f;
+            d.Run(TapeHaunt(index, () => reading), "tape haunt");
             Fx.Static(0.6f, Head.position, 0.8f, false, 0f);
             Fx.Play(Synth.Whisper(Rf(4f, 6f)), Head.position + Head.right * 0.35f, 0.6f, false, 1f, Head);
             var text = Screen(0.045f, new Color(0.85f, 0.82f, 0.78f));

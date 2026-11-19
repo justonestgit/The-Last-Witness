@@ -59,6 +59,13 @@ namespace TheLastWitness
             d.Add("mimico", "Mímico", 0.2f, 1.2f, 180f, Mimic, entity: true, major: true);
             d.Add("desorientacao", "Desorientação", 0.4f, 0.8f, 200f, Lost, moves: true, major: true);
             d.Add("gigante", "O Gigante", 0.6f, 1f, 240f, Giant, major: true);
+            // The five worst (Haunt.cs).
+            d.Add("estatuas", "Estátuas", 0.35f, 1.3f, 240f, Statues, entity: true, major: true);
+            d.Add("arrastado", "Arrastado", 0.45f, 1f, 260f, Drag, entity: true, moves: true, major: true);
+            d.Add("poltergeist", "Poltergeist", 0.3f, 1.2f, 220f, Poltergeist, entity: true, major: true);
+            d.Add("enforcados", "Enforcados", 0.45f, 1f, 260f, Hanged, entity: true, major: true);
+            d.Add("cacada", "Caçada no escuro", 0.5f, 1.1f, 280f, DarkHunt, entity: true, major: true);
+            HookCompanions();
         }
 
         public void Tick()

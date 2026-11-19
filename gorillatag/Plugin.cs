@@ -174,6 +174,7 @@ namespace TheLastWitness
                     case "tape": events.TestGoToTape(); break;
                     case "mode": Settings.Mode.Value = (GameMode)Enum.Parse(typeof(GameMode), arg); break;
                     case "props": Log.LogInfo("TheLastWitness: props " + events.PropsState()); break;
+                    case "haunt": events.TestTapeHaunt(int.Parse(arg) - 1, 8f); break;
                     case "tapes": events.TestTapes(int.Parse(arg)); break;
                     case "act": Director.Act = int.Parse(arg); break;
                     case "audio": Log.LogInfo("TheLastWitness: audio " + Fx.AudioState() + " | " + Hearing.State()); break;

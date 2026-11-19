@@ -250,12 +250,16 @@ namespace TheLastWitness
             return null;
         }
 
+        /// <summary>Every event that starts (the haunting rides along with each one).</summary>
+        public event Action<HorrorEvent> Began;
+
         public void Begin(HorrorEvent e)
         {
             e.LastRun = Time.time;
             Plugin.Log.LogInfo($"TheLastWitness: event {e.Id} (act {Act}, {Phase}, sanity {Sanity:0})");
             e.Active++;
             Run(e.Run(), e.Id, () => e.Active = Mathf.Max(0, e.Active - 1));
+            Began?.Invoke(e);
         }
 
         public bool Begin(string id)
