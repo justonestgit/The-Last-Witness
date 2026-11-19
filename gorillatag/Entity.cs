@@ -39,14 +39,26 @@ namespace TheLastWitness
         {
             if (started) yield break;
             started = true;
+            // A witness.bundle next to the DLL wins (the full one, with the private songs); else the one inside the DLL.
             string path = Path.Combine(Dir, "witness.bundle");
-            if (!File.Exists(path))
-            {
-                Plugin.Log.LogInfo("TheLastWitness: no witness.bundle; the Witness is a shadow of your gorilla");
-                yield break;
-            }
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            var req = AssetBundle.LoadFromFileAsync(path);
+            AssetBundleCreateRequest req;
+            if (File.Exists(path)) req = AssetBundle.LoadFromFileAsync(path);
+            else
+            {
+                using (var s = typeof(Entity).Assembly.GetManifestResourceStream("witness.bundle"))
+                {
+                    if (s == null)
+                    {
+                        Plugin.Log.LogInfo("TheLastWitness: no witness.bundle; the Witness is a shadow of your gorilla");
+                        yield break;
+                    }
+                    var bytes = new byte[s.Length];
+                    s.Read(bytes, 0, bytes.Length);
+                    req = AssetBundle.LoadFromMemoryAsync(bytes);
+                }
+                Plugin.Log.LogInfo("TheLastWitness: using the witness.bundle inside the DLL");
+            }
             yield return req;
             var bundle = req.assetBundle;
             if (bundle == null) yield break;

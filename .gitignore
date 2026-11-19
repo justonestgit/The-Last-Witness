@@ -29,3 +29,7 @@ shots/
 tools/patch_*.py
 tools/fix_static.py
 tools/*.cs.txt
+
+# Release downloads (attached to GitHub Releases, not committed)
+release/
+unity-release.log

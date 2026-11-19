@@ -59,7 +59,14 @@ public static class BuildWitness
         }
     }
 
-    public static void Build()
+    /// <summary>For the public release (embedded in the DLL): without the private-use songs (see Sounds/PRIVATE.md).</summary>
+    public static void BuildRelease() => Build(true);
+
+    private static readonly string[] PrivateSounds = { "ost_main", "countdown", "final_god" };
+
+    public static void Build() => Build(false);
+
+    private static void Build(bool release)
     {
         Directory.CreateDirectory(Out);
         // Pixel-art textures: keep them crisp like Gorilla Tag's.
@@ -144,6 +151,7 @@ public static class BuildWitness
         foreach (var f in Directory.GetFiles("Assets/Sounds", "*.wav"))
         {
             string p = f.Replace('\\', '/');
+            if (release && System.Array.IndexOf(PrivateSounds, Path.GetFileNameWithoutExtension(p)) >= 0) continue;
             var imp = (AudioImporter)AssetImporter.GetAtPath(p);
             var s = imp.defaultSampleSettings;
             // Long beds (soundtrack, ambience, songs) stay compressed and decode as they play: decompressed they cost ~80 MB.
@@ -156,11 +164,12 @@ public static class BuildWitness
             sounds.Add(p);
         }
 
-        Directory.CreateDirectory("Build");
+        string outDir = release ? "Build/release" : "Build";
+        Directory.CreateDirectory(outDir);
         sounds.Insert(0, Out + "/Witness.prefab");
         sounds.AddRange(meshes);
         var build = new AssetBundleBuild { assetBundleName = "witness.bundle", assetNames = sounds.ToArray() };
-        BuildPipeline.BuildAssetBundles("Build", new[] { build }, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows64);
-        Debug.Log("BuildWitness: done, " + new FileInfo("Build/witness.bundle").Length + " bytes");
+        BuildPipeline.BuildAssetBundles(outDir, new[] { build }, BuildAssetBundleOptions.ChunkBasedCompression, BuildTarget.StandaloneWindows64);
+        Debug.Log("BuildWitness: done, " + new FileInfo(outDir + "/witness.bundle").Length + " bytes");
     }
 }

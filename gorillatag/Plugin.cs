@@ -15,7 +15,7 @@ namespace TheLastWitness
     /// objects, anomalies, day and night swapping...) happen. Everything is local to your game, and it switches
     /// itself off in public rooms.
     /// </summary>
-    [BepInPlugin("dev.thelastwitness.gorillatag", "The Last Witness", "0.11.1")]
+    [BepInPlugin("dev.thelastwitness.gorillatag", "The Last Witness", "0.12.0")]
     public class Plugin : BaseUnityPlugin
     {
         public static ManualLogSource Log;

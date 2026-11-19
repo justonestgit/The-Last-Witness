@@ -35,10 +35,14 @@ dinâmica do Ghost Reactor e uma história em 8 fitas.
 - O mod começa **desligado** a cada vez que o jogo abre: ligue em *Começar a noite*.
 
 ## Instalar
-1. Gorilla Tag (Steam) com **BepInEx 5.4.23.x**.
-2. Copie a pasta `TheLastWitness` (com `TheLastWitness.dll`, `witness.bundle` e `CREDITS.txt`) para
-   `Gorilla Tag\BepInEx\plugins\`.
-3. Para remover: apague essa pasta e `BepInEx\config\dev.thelastwitness.gorillatag.cfg`.
+1. Tenha o Gorilla Tag (Steam) com o **BepInEx 5** instalado, como para qualquer mod.
+2. Em **[Releases](../../releases)**, baixe o `TheLastWitness.dll` da versão mais nova.
+3. Coloque o arquivo em `Gorilla Tag\BepInEx\plugins\`. Pronto: o modelo da Testemunha e os sons já vão dentro da DLL.
+
+Para remover: apague `TheLastWitness.dll` e `BepInEx\config\dev.thelastwitness.gorillatag.cfg`.
+
+> A DLL pública não traz três músicas de uso privado (trilha principal, contagem e final). Sem elas o mod usa
+> a trilha sintetizada e o final reserva. Quem tiver um `witness.bundle` completo pode deixá-lo ao lado da DLL: ele tem prioridade.
 
 ## Compilar
 Precisa do .NET SDK e do Gorilla Tag instalado (o projeto só referencia as DLLs do jogo, nada do jogo vai no repositório).
