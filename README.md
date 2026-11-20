@@ -1,14 +1,10 @@
 # The Last Witness
 
+![The Last Witness](docs/thumbnail.webp)
+
 Mod de terror para **Gorilla Tag** (BepInEx). A floresta vira um pesadelo: uma barra de sanidade que só piora,
 eventos sempre aleatórios, a Testemunha te perseguindo, jumpscares, corrupção do mundo, céu sinistro, iluminação
 dinâmica do Ghost Reactor e uma história em 8 fitas.
-
-![Menu](docs/menu.png)
-
-| | |
-|---|---|
-| ![A Testemunha](docs/witness.png) | ![Céu no VR](docs/sky-vr.png) |
 
 > Só funciona **offline ou em sala privada**. Em sala pública o mod fica desligado.
 
